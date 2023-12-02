@@ -135,7 +135,7 @@ export class LCService {
 
   verifyPresentation(vpjwt: any) {
     try {
-      const applicantDid: DIDWithKeys = dids.applicantDid;
+      const applicantDid: DIDWithKeys = dids.verifierDid;
       applicantDid.keyPair.algorithm = KEY_ALG.ES256K;
       const didEthr = new EthrDIDMethod(ethrProviders.ethrProvider);
       const didResolver = getSupportedResolvers([didEthr]);

@@ -21,6 +21,7 @@ export class CredentialsComponent implements OnInit {
 
   lcIssuerDIDStr: any = "";
   lcApplicantDIDStr: any = "";
+  lcVerifierDIDStr: any = "";
   vc: any = "";
   jwtvc: any = "";
   vp: any = "";
@@ -34,6 +35,7 @@ export class CredentialsComponent implements OnInit {
 
     this.lcIssuerDIDStr = JSON.stringify(this.dids.lcIssuerDid, null, 2);
     this.lcApplicantDIDStr = JSON.stringify(this.dids.applicantDid, null, 2);
+    this.lcVerifierDIDStr = JSON.stringify(this.dids.verifierDid, null, 2);
 
     this.lcService.vcObservable.subscribe((vcObject: any) => {
       this.vc = JSON.stringify(vcObject, null, 2)
@@ -68,6 +70,10 @@ export class CredentialsComponent implements OnInit {
       if (entityType == 'applicant') {
         this.dids.applicantDid = did;
         this.lcApplicantDIDStr = JSON.stringify(this.dids.applicantDid, null, 2);
+      }
+      if (entityType == 'verifier') {
+        this.dids.verifierDid = did;
+        this.lcVerifierDIDStr = JSON.stringify(this.dids.verifierDid, null, 2);
       }
     });
   }
